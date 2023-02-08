@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerBehave : MonoBehaviour
 {
-    public Rigidbody2D armBoby;
+    public Rigidbody2D leftBoby;
+    public Rigidbody2D rightBoby;
     Rigidbody2D mainBoby;
 
     public float power;
@@ -12,13 +13,24 @@ public class PlayerBehave : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-     mainBoby = GetComponent<Rigidbody2D>();
+        mainBoby = GetComponent<Rigidbody2D>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            leftBoby.AddForce(transform.up * -power, ForceMode2D.Impulse);
+            mainBoby.velocity = new Vector3(-power, power, 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            rightBoby.AddForce(transform.up * -power, ForceMode2D.Impulse);
+            mainBoby.velocity = new Vector3(power, power, 0);
+        }
+
     }
 }
