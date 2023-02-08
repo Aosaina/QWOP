@@ -22,13 +22,13 @@ public class PlayerBehave : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            leftBoby.AddForce(transform.up * -power, ForceMode2D.Impulse);
+            leftBoby.AddForce(-transform.up  * power, ForceMode2D.Impulse);
             mainBoby.velocity = new Vector3(-power, power, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            rightBoby.AddForce(transform.up * -power, ForceMode2D.Impulse);
+            rightBoby.AddForce(transform.right * power, ForceMode2D.Impulse);
             mainBoby.velocity = new Vector3(power, power, 0);
         }
 
