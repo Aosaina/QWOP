@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehave : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PlayerBehave : MonoBehaviour
 
     public float power;
 
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,15 @@ public class PlayerBehave : MonoBehaviour
         {
             rightBoby.AddForce(transform.right * power, ForceMode2D.Impulse);
             mainBoby.velocity = new Vector3(power, power, 0);
+
+        }
+
+        void OnCollisionEnter2D(Collider2D other)
+        {
+            if(other.gameObject.name == "Square")
+            {
+                SceneManager.LoadScene("GameOver");
+            }
         }
 
     }
