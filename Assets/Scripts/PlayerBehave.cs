@@ -24,7 +24,7 @@ public class PlayerBehave : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            leftBoby.AddForce(-transform.up  * power, ForceMode2D.Impulse);
+            leftBoby.AddForce(-transform.up * power, ForceMode2D.Impulse);
             mainBoby.velocity = new Vector3(-power, power, 0);
         }
 
@@ -34,14 +34,17 @@ public class PlayerBehave : MonoBehaviour
             mainBoby.velocity = new Vector3(power, power, 0);
 
         }
-
-        void OnCollisionEnter2D(Collider2D other)
-        {
-            if(other.gameObject.name == "Square")
-            {
-                SceneManager.LoadScene("GameOver");
-            }
-        }
-
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+    
+        if (other.gameObject.name == "star")
+        {
+            Destroy(other.gameObject);
+        }
+    }
+
+   
+    
 }
