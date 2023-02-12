@@ -42,6 +42,7 @@ public class PlayerBehave : MonoBehaviour
         if (other.gameObject.name == "star")
         {
             Destroy(other.gameObject);
+            SceneManager.LoadScene("GameWin");
         }
     }
 
